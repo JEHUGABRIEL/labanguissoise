@@ -42,7 +42,7 @@ export function Contact() {
           {/* Info Cards */}
           <div className="lg:col-span-1 space-y-6">
             <div className="bg-white p-8 shadow-sm border border-brand-dark/5">
-              <MapPin className="text-brand-gold w-8 h-8 mb-4" />
+              <MapPin className="text-brand-gold w-8 h-8 mb-4 shrink-0" />
               <h3 className="font-serif text-xl text-brand-dark mb-2">
                 {t('contact.adresse')}
               </h3>
@@ -58,7 +58,7 @@ export function Contact() {
             </div>
 
             <div className="bg-white p-8 shadow-sm border border-brand-dark/5">
-              <Phone className="text-brand-gold w-8 h-8 mb-4" />
+              <Phone className="text-brand-gold w-8 h-8 mb-4 shrink-0" />
               <h3 className="font-serif text-xl text-brand-dark mb-2">
                 {t('contact.telephone')}
               </h3>
@@ -73,7 +73,7 @@ export function Contact() {
             </div>
 
             <div className="bg-white p-8 shadow-sm border border-brand-dark/5">
-              <Mail className="text-brand-gold w-8 h-8 mb-4" />
+              <Mail className="text-brand-gold w-8 h-8 mb-4 shrink-0" />
               <h3 className="font-serif text-xl text-brand-dark mb-2">{t('contact.email')}</h3>
               <p className="text-brand-text/70 text-sm">
                 <a
@@ -86,7 +86,7 @@ export function Contact() {
             </div>
 
             <div className="bg-white p-8 shadow-sm border border-brand-dark/5">
-              <Clock className="text-brand-gold w-8 h-8 mb-4" />
+              <Clock className="text-brand-gold w-8 h-8 mb-4 shrink-0" />
               <h3 className="font-serif text-xl text-brand-dark mb-2">
                 {t('contact.horaires')}
               </h3>

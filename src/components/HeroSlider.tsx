@@ -115,7 +115,7 @@ export function HeroSlider({ slides, tPrefix, ctas, interval = 6000 }: HeroSlide
       </div>
 
       {/* Slider Indicators */}
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+      <div className="absolute bottom-24 ltr:left-1/2 rtl:right-1/2 ltr:-translate-x-1/2 rtl:translate-x-1/2 z-20 flex gap-3">
         {slides.map((_, idx) => (
           <button
             key={idx}
@@ -131,7 +131,7 @@ export function HeroSlider({ slides, tPrefix, ctas, interval = 6000 }: HeroSlide
       <button
         onClick={scrollToNext}
         aria-label="Défiler vers le bas"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce text-white/60 hover:text-brand-gold transition-colors"
+        className="absolute bottom-8 ltr:left-1/2 rtl:right-1/2 ltr:-translate-x-1/2 rtl:translate-x-1/2 z-20 animate-bounce text-white/60 hover:text-brand-gold transition-colors"
       >
         <ChevronDown size={36} strokeWidth={1.5} />
       </button>

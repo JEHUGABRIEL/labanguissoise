@@ -43,7 +43,7 @@ export function Footer() {
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-brand-gold shrink-0 mt-0.5" />
-                <span>
+                <span className="text-start">
                   KG 169/29, Kisementi Remera
                   <br />
                   Kigali, Rwanda
@@ -75,7 +75,7 @@ export function Footer() {
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <Clock size={18} className="text-brand-gold shrink-0 mt-0.5" />
-                <div>
+                <div className="text-start">
                   <p className="text-white font-medium mb-1">{t('footer.restaurant')}</p>
                   <p>{t('footer.tousLesJours')}</p>
                   <p>{t('footer.jusqua23h')}</p>

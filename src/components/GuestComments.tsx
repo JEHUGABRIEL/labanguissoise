@@ -160,7 +160,7 @@ export function GuestComments() {
                       </button>
                     ))}
                     {rating > 0 && (
-                      <span className="ml-3 text-sm text-brand-text/60 self-center">
+                      <span className="ms-3 text-sm text-brand-text/60 self-center">
                         {rating === 1 && t('rating.1')}
                         {rating === 2 && t('rating.2')}
                         {rating === 3 && t('rating.3')}

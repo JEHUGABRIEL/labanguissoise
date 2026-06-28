@@ -9,12 +9,13 @@ const languages = [
   { code: 'en', native: 'English', flag: '🇬🇧' },
   { code: 'es', native: 'Español', flag: '🇪🇸' },
   { code: 'ar', native: 'العربية', flag: '🇸🇦' },
+  { code: 'zh', native: '中文', flag: '🇨🇳' },
 ];
 
 export function Navbar() {
   const { t } = useTranslation();
   const currentLang = i18n.language.split('-')[0];
-  const supported = ['fr', 'en', 'es', 'ar'];
+  const supported = ['fr', 'en', 'es', 'ar', 'zh'];
   const lang = supported.includes(currentLang) ? currentLang : 'fr';
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -47,7 +48,7 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-brand-dark/95 backdrop-blur-md py-3 shadow-lg' : 'bg-transparent py-5'}`}>
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-brand-dark/95 backdrop-blur-md py-3 shadow-lg' : 'bg-transparent py-5'}`}>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
@@ -86,16 +87,16 @@ export function Navbar() {
               </button>
 
               {langOpen && (
-                <div className="absolute right-0 top-full mt-2 bg-white rounded-sm shadow-xl border border-gray-100 overflow-hidden min-w-[140px] z-50">
+                <div className="absolute ltr:right-0 rtl:left-0 top-full mt-2 bg-white rounded-sm shadow-xl border border-gray-100 overflow-hidden min-w-[140px] z-50">
                   {languages.map((l) => (
                     <button
                       key={l.code}
                       onClick={() => { i18n.changeLanguage(l.code); setLangOpen(false); }}
-                      className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm text-left transition-colors hover:bg-brand-sand ${lang === l.code ? 'bg-brand-sand font-medium text-brand-dark' : 'text-brand-text/80'}`}
+                      className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm text-start transition-colors hover:bg-brand-sand ${lang === l.code ? 'bg-brand-sand font-medium text-brand-dark' : 'text-brand-text/80'}`}
                     >
                       <span className="text-base">{l.flag}</span>
                       <span>{l.native}</span>
-                      <span className="text-[10px] uppercase text-gray-400 ml-auto">{l.code}</span>
+                      <span className="text-[10px] uppercase text-gray-400 ltr:ml-auto rtl:mr-auto">{l.code}</span>
                     </button>
                   ))}
                 </div>

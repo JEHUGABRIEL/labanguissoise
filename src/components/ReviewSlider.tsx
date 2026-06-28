@@ -70,7 +70,7 @@ export function ReviewSlider() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -80 }}
                 transition={{ duration: 0.4, ease: 'easeInOut' }}
-                className="w-full"
+                className="w-full ltr:text-left rtl:text-right"
               >
                 <div className="bg-white p-10 md:p-12 rounded-sm shadow-sm border border-brand-dark/5">
                   <Quote className="text-brand-gold/30 mx-auto mb-6" size={40} />
@@ -108,7 +108,7 @@ export function ReviewSlider() {
                 className="p-2 text-brand-text/50 hover:text-brand-primary transition-colors"
                 aria-label="Previous review"
               >
-                <ChevronLeft size={28} strokeWidth={1.5} />
+                <ChevronLeft size={28} strokeWidth={1.5} className="rtl:rotate-180" />
               </button>
 
               {/* Dots */}
@@ -131,7 +131,7 @@ export function ReviewSlider() {
                 className="p-2 text-brand-text/50 hover:text-brand-primary transition-colors"
                 aria-label="Next review"
               >
-                <ChevronRight size={28} strokeWidth={1.5} />
+                <ChevronRight size={28} strokeWidth={1.5} className="rtl:rotate-180" />
               </button>
             </div>
           )}

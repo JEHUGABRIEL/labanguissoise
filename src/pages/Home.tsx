@@ -19,46 +19,8 @@ const heroSlides = [
 { id: 2, image: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80' },
 { id: 3, image: 'https://images.unsplash.com/photo-1582719478250-c894099f72ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80' }];
 
-const featuredDishes = [
-{
-  name: 'Le Maboké Traditionnel',
-  description:
-  "Poisson frais cuit à l'étouffée dans des feuilles de bananier, épices locales.",
-  image:
-  'https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-  price: '15,000 RWF'
-},
-{
-  name: 'Brochettes de Chèvre',
-  description:
-  'Les incontournables brochettes rwandaises, grillées à la perfection.',
-  image:
-  'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-  price: '8,000 RWF'
-},
-{
-  name: 'Capitaine Braisé',
-  description: 'Poisson capitaine entier braisé aux épices centrafricaines.',
-  image:
-  'https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-  price: '18,000 RWF'
-}];
-
-const bestRooms = [
-{
-  name: 'Suite Exécutive',
-  description:
-  "Idéale pour les voyageurs d'affaires, avec espace bureau et lit King size.",
-  image:
-  'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-},
-{
-  name: 'Chambre Deluxe',
-  description:
-  'Confort absolu et décoration raffinée pour un séjour relaxant.',
-  image:
-  'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-}];
+const dishKeys = ['maboke', 'brochettes', 'capitaine'] as const;
+const roomKeys = ['executive', 'deluxe'] as const;
 
 export function Home() {
   useScreenInit();
@@ -173,7 +135,7 @@ export function Home() {
         </div>
 
         {/* Carousel Indicators */}
-        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+        <div className="absolute bottom-24 ltr:left-1/2 rtl:right-1/2 ltr:-translate-x-1/2 rtl:translate-x-1/2 z-20 flex gap-3">
           {heroSlides.map((_, idx) =>
           <button
             key={idx}
@@ -187,7 +149,7 @@ export function Home() {
         <button
           onClick={scrollToNext}
           aria-label="Défiler vers le bas"
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce text-white/60 hover:text-brand-gold transition-colors">
+          className="absolute bottom-8 ltr:left-1/2 rtl:right-1/2 ltr:-translate-x-1/2 rtl:translate-x-1/2 z-20 animate-bounce text-white/60 hover:text-brand-gold transition-colors">
           <ChevronDown size={36} strokeWidth={1.5} />
         </button>
       </section>
@@ -202,7 +164,7 @@ export function Home() {
                 alt="Chef preparing food"
                 className="w-full h-[600px] object-cover rounded-sm shadow-2xl" />
               
-              <div className="absolute -bottom-8 -right-8 bg-brand-primary p-8 text-white max-w-xs hidden md:block">
+              <div className="absolute -bottom-8 ltr:-right-8 rtl:-left-8 bg-brand-primary p-8 text-white max-w-xs hidden md:block">
                 <div className="flex gap-1 text-brand-gold mb-3">
                   {[...Array(5)].map((_, i) =>
                   <Star key={i} size={20} fill="currentColor" />
@@ -252,7 +214,7 @@ export function Home() {
                 {t('home.visite')}
                 <ArrowRight
                   size={20}
-                  className="group-hover:translate-x-1 transition-transform" />
+                  className="ltr:group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
                 
               </Link>
             </div>
@@ -276,26 +238,32 @@ export function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {featuredDishes.map((dish, idx) =>
+            {dishKeys.map((key, idx) =>
             <div key={idx} className="group cursor-pointer">
                 <div className="relative overflow-hidden rounded-sm mb-6 h-64">
                   <img
-                  src={dish.image}
-                  alt={dish.name}
+                  src={
+                    key === 'maboke'
+                      ? 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                      : key === 'brochettes'
+                      ? 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                      : 'https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                  }
+                  alt={t(`menu.${key}.name`)}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 
                   <div className="absolute inset-0 bg-brand-dark/20 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="text-xl font-serif text-brand-dark group-hover:text-brand-primary transition-colors">
-                    {dish.name}
+                    {t(`menu.${key}.name`)}
                   </h3>
                   <span className="text-brand-gold font-medium">
-                    {dish.price}
+                    {key === 'maboke' ? '15,000 RWF' : key === 'brochettes' ? '8,000 RWF' : '18,000 RWF'}
                   </span>
                 </div>
                 <p className="text-brand-text/70 text-sm leading-relaxed">
-                  {dish.description}
+                  {t(`menu.${key}.desc`)}
                 </p>
               </div>
             )}
@@ -328,28 +296,32 @@ export function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-            {bestRooms.map((room, idx) =>
+            {roomKeys.map((key, idx) =>
             <div
               key={idx}
               className="bg-white rounded-sm overflow-hidden shadow-sm border border-brand-dark/5 group">
               
                 <div className="relative h-80 overflow-hidden">
                   <img
-                  src={room.image}
-                  alt={room.name}
+                  src={
+                    key === 'executive'
+                      ? 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                      : 'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                  }
+                  alt={t(`rooms.${key}.name`)}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 
                 </div>
                 <div className="p-8 text-center">
                   <h3 className="text-2xl font-serif text-brand-dark mb-4">
-                    {room.name}
+                    {t(`rooms.${key}.name`)}
                   </h3>
-                  <p className="text-brand-text/70 mb-6">{room.description}</p>
+                  <p className="text-brand-text/70 mb-6">{t(`rooms.${key}.desc`)}</p>
                   <Link
                   to="/hebergement"
                   className="inline-flex items-center gap-2 text-brand-gold font-medium hover:text-brand-primary transition-colors">
                   
-                    {t('home.voirDetails')} <ArrowRight size={18} />
+                    {t('home.voirDetails')} <ArrowRight size={18} className="rtl:rotate-180" />
                   </Link>
                 </div>
               </div>
