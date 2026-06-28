@@ -87,6 +87,10 @@
   "menu.recetteTraditionnelle": "Recette traditionnelle",
   "badge.chef": "Chef",
   "badge.populaire": "Populaire",
+  "rooms.standard.longDesc": "Une chambre confortable et fonctionnelle, idéale pour les voyageurs souhaitant allier qualité et budget. Équipée d'un lit double, de la climatisation et d'une salle de bain privative, elle offre tout le nécessaire pour un séjour agréable au cœur de Kigali.",
+  "rooms.deluxe.longDesc": "Plongez dans un univers de confort absolu avec notre chambre Deluxe. Sa décoration raffinée, son lit Queen size et sa vue imprenable sur la ville en font le choix parfait pour les voyageurs exigeants en quête de sérénité.",
+  "rooms.executive.longDesc": "Conçue pour les professionnels en déplacement, la Suite Exécutive allie fonctionnalité et élégance. Un espace bureau dédié, un lit King size et un accès Wi-Fi haut débit vous permettent de travailler et de vous détendre en toute sérénité.",
+  "rooms.presidential.longDesc": "Le summum du luxe et du raffinement. La Suite Présidentielle dispose d'un salon privé, d'un jacuzzi, d'un service d'étage 24h/24 et d'une literie King size. Une expérience d'exception réservée à une clientèle exigeante.",
   "rooms.executive.name": "Suite Exécutive",
   "rooms.executive.desc": "Idéale pour les voyageurs d'affaires, avec espace bureau et lit King size.",
   "rooms.executive.features": "Espace bureau • Lit King size • Wi-Fi haut débit • Climatisation • Salle de bain privative • Petit-déjeuner inclus",
@@ -106,6 +110,7 @@
   "rooms.sectionTitle": "Nos Chambres",
   "rooms.sectionDesc": "Découvrez notre sélection de chambres élégantes, conçues pour votre confort et votre sérénité.",
   "rooms.perNight": "par nuit",
+  "rooms.clickDetails": "Cliquez pour voir les détails de la chambre",
   "rooms.reserver": "Réserver cette chambre",
   "hebergementHero.subtitle1": "Confort Absolu",
   "hebergementHero.title1": "Un Havre de Paix",
@@ -219,4 +224,3 @@
   "ambiance.ctaDesc": "Réservez votre table pour un dîner d'affaires, un repas diplomatique ou une soirée entre amis.",
   "ambiance.ctaBtn": "Appeler le +250 725 415 883",
   "ambiance.ctaHoraires": "Ouvert tous les jours jusqu'à 23h00"
-}

@@ -7,6 +7,7 @@ import { Home } from './pages/Home';
 import { Restaurant } from './pages/Restaurant';
 import { Accommodation } from './pages/Accommodation';
 import { Contact } from './pages/Contact';
+import { AdminPage } from './pages/Admin';
 export function App() {
   const { i18n: i18nInstance } = useTranslation();
   useEffect(() => {
@@ -29,6 +30,7 @@ export function App() {
             <Route path="/restaurant" element={<Restaurant />} />
             <Route path="/hebergement" element={<Accommodation />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </main>
         <Footer />

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Phone, Mail } from 'lucide-react';
 import { useScreenInit } from '../useScreenInit';
 import { HeroSlider } from '../components/HeroSlider';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 export function Contact() {
   useScreenInit();
@@ -29,75 +30,30 @@ export function Contact() {
     <div className="min-h-screen bg-brand-sand">
       <HeroSlider slides={heroSlides} tPrefix="contactHero" ctas={heroCtas} />
       <div className="max-w-7xl mx-auto px-4 py-16">
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-center mb-16"
+        >
           <h1 className="text-5xl font-serif text-brand-dark mb-4">
             {t('contact.header')}
           </h1>
           <p className="text-brand-text/70 max-w-2xl mx-auto">
             {t('contact.subtitle')}
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Info Cards */}
-          <div className="lg:col-span-1 space-y-6">
-            <div className="bg-white p-8 shadow-sm border border-brand-dark/5">
-              <MapPin className="text-brand-gold w-8 h-8 mb-4 shrink-0" />
-              <h3 className="font-serif text-xl text-brand-dark mb-2">
-                {t('contact.adresse')}
-              </h3>
-              <p className="text-brand-text/70 text-sm leading-relaxed">
-                KG 169/29, Kisementi Remera
-                <br />
-                Kigali, Rwanda
-                <br />
-                <span className="italic mt-2 block text-brand-primary">
-                  À quelques pas du Kigali Convention Center
-                </span>
-              </p>
-            </div>
-
-            <div className="bg-white p-8 shadow-sm border border-brand-dark/5">
-              <Phone className="text-brand-gold w-8 h-8 mb-4 shrink-0" />
-              <h3 className="font-serif text-xl text-brand-dark mb-2">
-                {t('contact.telephone')}
-              </h3>
-              <p className="text-brand-text/70 text-sm">
-                <a
-                  href="tel:+250725415883"
-                  className="hover:text-brand-primary transition-colors">
-                  
-                  +250 725 415 883
-                </a>
-              </p>
-            </div>
-
-            <div className="bg-white p-8 shadow-sm border border-brand-dark/5">
-              <Mail className="text-brand-gold w-8 h-8 mb-4 shrink-0" />
-              <h3 className="font-serif text-xl text-brand-dark mb-2">{t('contact.email')}</h3>
-              <p className="text-brand-text/70 text-sm">
-                <a
-                  href="mailto:labanguissoise250@gmail.com"
-                  className="hover:text-brand-primary transition-colors">
-                  
-                  labanguissoise250@gmail.com
-                </a>
-              </p>
-            </div>
-
-            <div className="bg-white p-8 shadow-sm border border-brand-dark/5">
-              <Clock className="text-brand-gold w-8 h-8 mb-4 shrink-0" />
-              <h3 className="font-serif text-xl text-brand-dark mb-2">
-                {t('contact.horaires')}
-              </h3>
-              <p className="text-brand-text/70 text-sm">
-                {t('contact.horairesDetail')}
-              </p>
-            </div>
-          </div>
-
-          {/* Form & Map */}
-          <div className="lg:col-span-2 space-y-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+        >
+          {/* Form */}
+          <div className="space-y-8">
             <div className="bg-white p-8 md:p-12 shadow-sm border border-brand-dark/5">
               <h2 className="text-3xl font-serif text-brand-dark mb-8">
                 {t('contact.messageTitle')}
@@ -174,29 +130,49 @@ export function Contact() {
                   t('contact.envoi') :
                   t('contact.envoyer')}
                   </button>
+
+                  {/* Quick contact links */}
+                  <div className="pt-6 mt-6 border-t border-brand-dark/5">
+                    <p className="text-xs text-brand-text/50 uppercase tracking-wider mb-3 text-center">
+                      Ou contactez-nous directement
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <a
+                        href="tel:+250725415883"
+                        className="flex items-center justify-center gap-2 px-4 py-3 bg-brand-sand border border-brand-dark/5 text-brand-dark text-sm font-medium hover:bg-brand-primary hover:text-white transition-colors rounded-sm flex-1"
+                      >
+                        <Phone size={16} />
+                        +250 725 415 883
+                      </a>
+                      <a
+                        href="mailto:labanguissoise250@gmail.com"
+                        className="flex items-center justify-center gap-2 px-4 py-3 bg-brand-sand border border-brand-dark/5 text-brand-dark text-sm font-medium hover:bg-brand-primary hover:text-white transition-colors rounded-sm flex-1"
+                      >
+                        <Mail size={16} />
+                        labanguissoise250@gmail.com
+                      </a>
+                    </div>
+                  </div>
                 </form>
               }
             </div>
 
-            {/* Map Placeholder */}
-            <div className="h-[400px] bg-gray-200 relative overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                alt="Kigali Map Area"
-                className="w-full h-full object-cover opacity-60" />
-              
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-white/90 p-4 shadow-lg text-center flex flex-col items-center">
-                  <MapPin className="text-brand-primary mb-2" size={32} />
-                  <p className="font-serif font-bold text-brand-dark">
-                    La Banguissoise
-                  </p>
-                  <p className="text-xs text-brand-text/70">Kisementi Remera</p>
-                </div>
+            {/* Map */}
+            <div className="h-[400px] bg-gray-200 relative overflow-hidden rounded-sm shadow-sm border border-brand-dark/5 group">
+              <iframe
+                title="La Banguissoise - Localisation"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=30.0720%2C-1.9480%2C30.0830%2C-1.9380&layer=mapnik&marker=-1.9430%2C30.0775"
+                className="w-full h-full border-0 transition-transform duration-700 group-hover:scale-[1.03]"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-sm shadow-sm text-xs">
+                <span className="font-medium text-brand-dark">KG 169/29, Kisementi Remera</span>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>);
 

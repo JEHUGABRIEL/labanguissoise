@@ -12,6 +12,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScreenInit } from '../useScreenInit';
 import { useTranslation } from 'react-i18next';
+import { getMenuPrice } from '../adminStore';
 import { Ambiance } from '../components/Ambiance';
 import { ReviewSlider } from '../components/ReviewSlider';
 const heroSlides = [
@@ -157,7 +158,13 @@ export function Home() {
       {/* Intro / About Section */}
       <section className="py-24 bg-brand-sand">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+          >
             <div className="relative">
               <img
                 src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
@@ -218,14 +225,20 @@ export function Home() {
                 
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Featured Dishes Section */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-center mb-16"
+          >
             <span className="text-brand-gold font-medium tracking-widest uppercase text-sm">
               {t('home.cuisine')}
             </span>
@@ -235,9 +248,15 @@ export function Home() {
             <p className="text-brand-text/70 max-w-2xl mx-auto">
               {t('home.platsDesc')}
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12"
+          >
             {dishKeys.map((key, idx) =>
             <div key={idx} className="group cursor-pointer">
                 <div className="relative overflow-hidden rounded-sm mb-6 h-64">
@@ -259,7 +278,11 @@ export function Home() {
                     {t(`menu.${key}.name`)}
                   </h3>
                   <span className="text-brand-gold font-medium">
-                    {key === 'maboke' ? '15,000 RWF' : key === 'brochettes' ? '8,000 RWF' : '18,000 RWF'}
+                    {key === 'maboke'
+                      ? getMenuPrice('maboke', '15,000 RWF')
+                      : key === 'brochettes'
+                      ? getMenuPrice('brochettes', '8,000 RWF')
+                      : getMenuPrice('capitaine', '18,000 RWF')}
                   </span>
                 </div>
                 <p className="text-brand-text/70 text-sm leading-relaxed">
@@ -267,7 +290,7 @@ export function Home() {
                 </p>
               </div>
             )}
-          </div>
+          </motion.div>
 
           <div className="text-center">
             <Link
@@ -283,7 +306,13 @@ export function Home() {
       {/* Best Rooms Section */}
       <section className="py-24 bg-brand-sand">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-center mb-16"
+          >
             <span className="text-brand-gold font-medium tracking-widest uppercase text-sm">
               {t('home.hebergementLabel')}
             </span>
@@ -293,9 +322,15 @@ export function Home() {
             <p className="text-brand-text/70 max-w-2xl mx-auto">
               {t('home.chambresDesc')}
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12"
+          >
             {roomKeys.map((key, idx) =>
             <div
               key={idx}
@@ -326,7 +361,7 @@ export function Home() {
                 </div>
               </div>
             )}
-          </div>
+          </motion.div>
 
           <div className="text-center">
             <Link
@@ -341,7 +376,13 @@ export function Home() {
 
       {/* Location Banner */}
       <section className="bg-brand-dark py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          className="max-w-4xl mx-auto px-4 text-center"
+        >
           <MapPin size={40} className="text-brand-gold mx-auto mb-6" />
           <h2 className="text-3xl font-serif text-white mb-4">
             {t('home.idealement')}
@@ -356,7 +397,7 @@ export function Home() {
             
             {t('home.voirCarte')}
           </Link>
-        </div>
+        </motion.div>
       </section>
 
       {/* Ambiance Section */}
@@ -375,7 +416,13 @@ export function Home() {
           />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 reveal" data-reveal="up">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-center mb-16"
+          >
             <span className="text-brand-gold font-medium tracking-widest uppercase text-sm">
               {t('contact.header')}
             </span>
@@ -385,9 +432,15 @@ export function Home() {
             <p className="text-white/60 max-w-2xl mx-auto font-light">
               {t('contact.subtitle')}
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+            className="grid grid-cols-1 lg:grid-cols-3 gap-12"
+          >
             {/* Contact Info Cards */}
             <div className="space-y-4">
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-sm p-6 flex items-start gap-4 group hover:border-brand-gold/30 transition-colors">
@@ -504,7 +557,7 @@ export function Home() {
                 )}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>);

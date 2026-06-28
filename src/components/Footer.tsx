@@ -2,12 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Clock, Instagram, Facebook } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
+
 export function Footer() {
   const { t } = useTranslation();
   return (
     <footer className="bg-brand-dark text-white/80 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12"
+        >
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2 mb-6">
@@ -129,14 +137,20 @@ export function Footer() {
               </li>
             </ul>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/50">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/50"
+        >
           <p>
             &copy; {new Date().getFullYear()} La Banguissoise. {t('footer.droits')}
           </p>
           <p>{t('footer.ouvertDepuis')}</p>
-        </div>
+        </motion.div>
       </div>
     </footer>);
 

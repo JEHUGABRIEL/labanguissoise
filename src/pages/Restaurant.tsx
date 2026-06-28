@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useScreenInit } from '../useScreenInit';
 import { useTranslation } from 'react-i18next';
 import { GuestComments } from '../components/GuestComments';
+import { getMenuPrice } from '../adminStore';
 import { HeroSlider } from '../components/HeroSlider';
 import { X, Star, Clock, ChefHat, Utensils } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -133,7 +134,7 @@ export function Restaurant() {
                     {/* Price overlay on image */}
                     <div className="absolute bottom-3 ltr:left-3 rtl:right-3 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-sm">
                       <span className="text-brand-primary font-bold text-sm">
-                        {item.price}
+                        {getMenuPrice(item.tKey, item.price)}
                       </span>
                     </div>
                   </div>
@@ -152,7 +153,7 @@ export function Restaurant() {
                         {t('menu.clickDetails')}
                       </span>
                       <span className="text-brand-gold text-sm font-medium">
-                        {item.price}
+                        {getMenuPrice(item.tKey, item.price)}
                       </span>
                     </div>
                   </div>
@@ -195,7 +196,7 @@ export function Restaurant() {
                     {t(`menu.${selectedItem.tKey}.name`)}
                   </h3>
                   <span className="text-brand-gold font-bold text-lg">
-                    {selectedItem.price}
+                    {getMenuPrice(selectedItem.tKey, selectedItem.price)}
                   </span>
                 </div>
                 <button
